@@ -1,0 +1,474 @@
+/* styles.css - Modern, professional, and informative style for used car sales news */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #0a1e3f; /* dark blue */
+    color: #ffffff;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header {
+    background-color: #0a1e3f;
+    padding: 20px 0;
+    border-bottom: 3px solid #f97316; /* orange accent */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #f97316;
+    margin-bottom: 8px;
+}
+
+.sub-title {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #d1d5db; /* light gray */
+}
+
+.hero-section {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+}
+
+.main-layout {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.content-area {
+    flex: 1 1 700px;
+    background-color: #142a5c;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+}
+
+.infographics h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.sales-chart {
+    width: 100%;
+    height: auto;
+    background-color: #0a1e3f;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+    margin-bottom: 30px;
+}
+
+.city-sales-map {
+    background-color: #0a1e3f;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+    margin-bottom: 40px;
+}
+
+.city-list {
+    list-style: none;
+    color: #f97316;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.city-list li {
+    min-width: 120px;
+}
+
+.highlights-section {
+    margin-bottom: 30px;
+}
+
+.highlights-section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #f97316;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.highlights-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.highlight-card {
+    background-color: #0a1e3f;
+    padding: 15px 20px;
+    border-radius: 10px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.highlight-card:hover,
+.highlight-card:focus-within {
+    transform: translateY(-6px);
+    outline: none;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.sedan-icon {
+    background-image: url('https://img.icons8.com/ios-filled/50/f97316/sedan.png');
+}
+
+.suv-icon {
+    background-image: url('https://img.icons8.com/ios-filled/50/f97316/suv.png');
+}
+
+.mpv-icon {
+    background-image: url('https://img.icons8.com/ios-filled/50/f97316/car.png');
+}
+
+.highlight-text h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.highlight-text p {
+    font-size: 1rem;
+    color: #d1d5db;
+}
+
+.expert-quote-section {
+    margin-bottom: 30px;
+    background-color: #142a5c;
+    padding: 25px 30px;
+    border-radius: 12px;
+    font-style: italic;
+    color: #f97316;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.expert-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f97316;
+}
+
+.expert-quote-section blockquote {
+    margin: 0;
+    font-size: 1.2rem;
+    flex: 1;
+}
+
+.expert-quote-section footer {
+    margin-top: 15px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: right;
+    color: #ffffff;
+}
+
+.popular-cars-section {
+    margin-bottom: 30px;
+}
+
+.popular-cars-section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #f97316;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.popular-cars-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.popular-cars-list li {
+    background-color: #0a1e3f;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+    width: 280px;
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.popular-cars-list li:hover,
+.popular-cars-list li:focus-within {
+    transform: translateY(-6px);
+    outline: none;
+}
+
+.popular-cars-list img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.car-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.car-info p {
+    font-size: 1rem;
+    color: #d1d5db;
+    margin: 2px 0;
+}
+
+.sidebar {
+    flex: 0 0 300px;
+    background-color: #142a5c;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+    color: #ffffff;
+    height: fit-content;
+}
+
+.sidebar h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #f97316;
+}
+
+.filter-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#carFilterForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#carFilterForm input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.related-news-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.related-news-list a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-left: 4px solid transparent;
+    padding-left: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.related-news-list a:hover,
+.related-news-list a:focus {
+    border-color: #f97316;
+    outline: none;
+}
+
+.btn-list {
+    background-color: #f97316;
+    color: #0a1e3f;
+    border: none;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-list:hover,
+.btn-list:focus {
+    background-color: #d65a0b;
+    outline: none;
+}
+
+.footer {
+    background-color: #0a1e3f;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 3px solid #f97316;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.social-share {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.social-share-btn {
+    background-color: #f97316;
+    border: none;
+    color: #0a1e3f;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.social-share-btn:hover,
+.social-share-btn:focus {
+    background-color: #d65a0b;
+    outline: none;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        text-align: center;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .sub-title {
+        font-size: 1rem;
+    }
+
+    .hero-section {
+        margin: 20px 0;
+    }
+
+    .main-layout {
+        gap: 20px;
+    }
+
+    .content-area {
+        padding: 20px;
+    }
+
+    .infographics h2,
+    .highlights-section h2,
+    .popular-cars-section h2,
+    .sidebar h2 {
+        font-size: 1.4rem;
+    }
+
+    .highlights-cards,
+    .popular-cars-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .highlight-card,
+    .popular-cars-list li {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .expert-quote-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .expert-photo {
+        margin: 0 auto 15px;
+    }
+
+    .btn-list {
+        max-width: 100%;
+    }
+}
