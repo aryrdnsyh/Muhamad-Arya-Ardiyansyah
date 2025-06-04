@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Konser ID</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box register">
+            <div class="logo">
+                <i class="fas fa-music"></i>
+                <h1>Konser ID</h1>
+            </div>
+            <h2>Create Account</h2>
+            <p class="subtitle">Join our music community today!</p>
+            <form id="register-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" name="name" required placeholder="Full Name">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" required placeholder="Email Address">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" required placeholder="Password">
+                </div>
+                <div class="terms">
+                    <label>
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="#">Terms & Conditions</a></span>
+                    </label>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <div class="divider">
+                <span>or register with</span>
+            </div>
+            <div class="social-auth">
+                <button class="google" onclick="googleSignIn()">
+                    <i class="fab fa-google"></i> Register with Google
+                </button>
+                <button class="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+            </div>
+            <p class="switch-auth">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>

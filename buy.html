@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beli Tiket Konser</title>
+    <link rel="stylesheet" href="buy.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Konser ID</h1>
+    </header>
+
+    <div class="concert-container">
+        <div class="concert-details">
+            <div class="concert-image">
+                <img id="concert-image" src="images/745x489-img-81250-bernadya-instagrambernadyaribka.jpg" alt="Konser">
+            </div>
+            <div class="concert-info">
+                <h2 id="concert-title">Bernadya Live in Concert</h2>
+                <p><i class="fas fa-calendar-alt"></i> <strong>Tanggal:</strong> <span id="concert-date">12 Maret 2025</span></p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Tempat:</strong> <span id="concert-location">Jakarta International Stadium</span></p>
+                <p><i class="fas fa-clock"></i> <strong>Waktu:</strong> 19:00 WIB</p>
+                <p id="concert-description"><strong>Deskripsi:</strong> Bersiaplah untuk malam yang tak terlupakan bersama Bernadya! Nikmati keajaiban musik live saat ia membawakan lagu-lagu terbaik dan rilisan terbarunya. Konser ini menjanjikan pertunjukan spektakuler dengan visual yang memukau dan penampilan yang luar biasa.</p>
+            </div>
+        </div>
+
+        <div class="ticket-options">
+            <h3>Pilih Tiket</h3>
+            <div class="ticket-type">
+                <div class="ticket-info">
+                    <h4>Presale 1 - Festival Silver</h4>
+                    <p>Area berdiri umum</p>
+                    <div class="ticket-price" id="silver-price">Rp150.000</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('silver', -1)">-</button>
+                    <span class="quantity" id="silver-quantity">0</span>
+                    <button class="quantity-btn" onclick="updateQuantity('silver', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="ticket-type">
+                <div class="ticket-info">
+                    <h4>Presale 1 - Festival Gold</h4>
+                    <p>Area berdiri premium dengan pemandangan lebih baik</p>
+                    <div class="ticket-price" id="gold-price">Rp200.000</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('gold', -1)">-</button>
+                    <span class="quantity" id="gold-quantity">0</span>
+                    <button class="quantity-btn" onclick="updateQuantity('gold', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="ticket-type">
+                <div class="ticket-info">
+                    <h4>Presale 1 - VIP</h4>
+                    <p>Area berdiri VIP dengan pemandangan terdekat</p>
+                    <div class="ticket-price" id="vip-price">Rp300.000</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('vip', -1)">-</button>
+                    <span class="quantity" id="vip-quantity">0</span>
+                    <button class="quantity-btn" onclick="updateQuantity('vip', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="ticket-type">
+                <div class="ticket-info">
+                    <h4>Presale 1 - VVIP (Seating)</h4>
+                    <p>Premium seated area with best view</p>
+                    <div class="ticket-price" id="vvip-price">Rp400.000</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('vvip', -1)">-</button>
+                    <span class="quantity" id="vvip-quantity">0</span>
+                    <button class="quantity-btn" onclick="updateQuantity('vvip', 1)">+</button>
+                </div>
+            </div>
+            <div class="total-price">
+                <h3>Total Price: <span id="total-price">Rp0</span></h3>
+            </div>
+            <!-- Modal Data Diri -->
+     <div id="user-data-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); color: white; justify-content: center; align-items: center;">
+        <div style="background: #222; padding: 20px; border-radius: 10px; width: 90%; max-width: 400px;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Isi Data Diri</h2>
+            <form id="user-data-form" style="width: 100%;">
+                <div style="margin-bottom: 15px; width: 100%;">
+                    <label for="name" style="display: block; margin-bottom: 5px;">Nama:</label>
+                    <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px; width: 100%;">
+                    <label for="email" style="display: block; margin-bottom: 5px;">Email:</label>
+                    <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 15px; width: 100%;">
+                    <label for="phone" style="display: block; margin-bottom: 5px;">Nomor Telepon:</label>
+                    <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+                <button type="button" onclick="submitUserData()" style="width: 100%; padding: 10px; background-color: #4caf50; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">Lanjutkan</button>
+            </form>
+            <button onclick="closeUserDataModal()" style="width: 100%; margin-top: 10px; padding: 10px; background-color: #f00; border: none; border-radius: 5px; cursor: pointer;">Tutup</button>
+        </div>
+    </div>
+    
+    <!-- Modal Metode Pembayaran -->
+    <div id="payment-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); color: white; justify-content: center; align-items: center;">
+        <div style="background: #222; padding: 20px; border-radius: 10px; width: 90%; max-width: 400px;">
+            <h2>Pilih Metode Pembayaran</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li><button onclick="bayar('gopay')" style="width: 100%; margin: 10px 0; padding: 10px; background-color: #f9c50e; border: none; border-radius: 5px; cursor: pointer;">GoPay</button></li>
+                <li><button onclick="bayar('ovo')" style="width: 100%; margin: 10px 0; padding: 10px; background-color: #00aaff; border: none; border-radius: 5px; cursor: pointer;">OVO</button></li>
+                <li><button onclick="bayar('dana')" style="width: 100%; margin: 10px 0; padding: 10px; background-color: #8dc63f; border: none; border-radius: 5px; cursor: pointer;">DANA</button></li>
+                <li><button onclick="bayar('shopeepay')" style="width: 100%; margin: 10px 0; padding: 10px; background-color: #ff5722; border: none; border-radius: 5px; cursor: pointer;">ShopeePay</button></li>
+            </ul>
+            <button onclick="closePaymentModal()" style="width: 100%; margin-top: 10px; padding: 10px; background-color: #f00; border: none; border-radius: 5px; cursor: pointer;">Tutup</button>
+        </div>
+    </div>
+    
+    <script>
+        // Add this before existing scripts
+        const concertPrices = {
+            1: { // Bernadya
+                silver: 175000,
+                gold: 249000,
+                vip: 499000,
+                vvip: 1700000
+            },
+            2: { // Iwan Fals
+                silver: 200000,
+                gold: 300000,
+                vip: 600000,
+                vvip: 2000000
+            },
+            3: { // Tipe X
+                silver: 150000,
+                gold: 225000,
+                vip: 450000,
+                vvip: 1500000 
+            },
+            4: { // Raisa
+                silver: 180000,
+                gold: 260000,
+                vip: 520000,
+                vvip: 1800000
+            },
+            5: { // Noah
+                silver: 190000,
+                gold: 275000,
+                vip: 550000,
+                vvip: 1900000
+            },
+            6: { // Sheila on 7
+                silver: 170000,
+                gold: 255000,
+                vip: 510000,
+                vvip: 1750000
+            },
+            7: { // Glenn Fredly
+                silver: 185000,
+                gold: 270000,
+                vip: 540000,
+                vvip: 1850000
+            },
+            8: { // Tulus
+                silver: 195000,
+                gold: 285000,
+                vip: 570000,
+                vvip: 1950000
+            },
+            9: { // Andmesh
+                silver: 200000,
+                gold: 300000,
+                vip: 600000,
+                vvip: 2000000
+            },
+            10: { // Yura Yunita
+                silver: 175000,
+                gold: 250000,
+                vip: 500000,
+                vvip: 1750000
+            },
+            11: { // Pamungkas
+                silver: 180000,
+                gold: 265000,
+                vip: 530000,
+                vvip: 1800000
+            }
+            }
+            // Add other concert prices...
+
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const concertId = urlParams.get('id');
+            const concertName = urlParams.get('name');
+            const concertImage = urlParams.get('image');
+            
+            // Update concert details
+            document.getElementById('concert-title').textContent = `${concertName} Live in Concert`;
+            document.getElementById('concert-image').src = `images/${concertImage}`;
+            
+            // Update concert description based on concert name
+            const descriptions = {
+                'Bernadya': 'Bersiaplah untuk malam yang tak terlupakan bersama Bernadya! Nikmati keajaiban musik live saat ia membawakan lagu-lagu terbaik dan rilisan terbarunya. Konser ini menjanjikan pertunjukan spektakuler dengan visual yang memukau dan penampilan yang luar biasa.',
+                'Iwan Fals': 'Saksikan legenda musik Indonesia, Iwan Fals, dalam konser yang penuh dengan lagu-lagu hits dan pesan-pesan sosial yang mendalam. Jangan lewatkan kesempatan untuk menyaksikan penampilan yang penuh energi dan emosi dari sang maestro.',
+                'Tipe X': 'Nikmati malam penuh ska dan reggae bersama Tipe X! Dengan lagu-lagu yang ceria dan penuh semangat, konser ini akan membuat Anda berdansa sepanjang malam. Jangan lewatkan penampilan yang penuh warna dan kegembiraan dari band legendaris ini.',
+                'NDX AKA': 'Bersiaplah untuk malam yang penuh dengan musik hip-hop dan rap bersama NDX AKA. Dengan lirik-lirik yang tajam dan beat yang menghentak, konser ini akan menjadi pengalaman yang tak terlupakan bagi para penggemar musik urban.',
+                'Sheila on 7': 'Bergabunglah dalam malam yang spektakuler bersama Sheila On 7! Dengan pengalaman lebih dari dua dekade, band legendaris ini akan membawakan lagu-lagu hits seperti "Dan", "Melompat Lebih Tinggi", "Hari Bersamanya", "Seberapa Pantas", dan banyak lainnya. Duta dan personil band akan menghadirkan performa memukau dengan sentuhan emosional yang khas SO7.',
+                'Dewa 19': 'Jangan lewatkan kesempatan untuk menyaksikan Dewa 19, salah satu band rock terbesar di Indonesia. Dengan penampilan yang penuh energi dan lagu-lagu hits yang mendunia, konser ini akan menjadi malam yang penuh dengan musik berkualitas dan kenangan indah.',
+                'Guyon Waton': 'Nikmati malam penuh dengan musik dangdut koplo bersama Guyon Waton. Dengan lirik-lirik yang menghibur dan irama yang menghentak, konser ini akan membuat Anda bergoyang sepanjang malam. Jangan lewatkan penampilan yang penuh keceriaan dari band ini.',
+                'Slank': 'Saksikan penampilan legendaris dari Slank, band rock terbesar di Indonesia. Dengan lagu-lagu hits yang telah menjadi anthem bagi banyak generasi, konser ini akan menjadi malam yang penuh dengan energi dan semangat rock and roll.',
+                'The Changcuters': 'Bersiaplah untuk malam yang penuh dengan musik rock n roll bersama The Changcuters. Dengan gaya yang unik dan penampilan yang penuh energi, konser ini akan menjadi pengalaman yang tak terlupakan bagi para penggemar musik rock.',
+                'JKT 48': 'Nikmati malam penuh dengan musik pop dan tarian bersama JKT 48. Dengan penampilan yang penuh semangat dan lagu-lagu hits yang catchy, konser ini akan menjadi pengalaman yang menyenangkan bagi para penggemar idol group.',
+                'The Panturas': 'Saksikan penampilan memukau dari The Panturas, band surf rock yang sedang naik daun. Dengan lagu-lagu yang ceria dan penuh semangat, konser ini akan membawa Anda pada perjalanan musik yang menyenangkan dan penuh warna.',
+                'Maliq D Essentials': 'Siap-siap untuk malam yang memukau bersama Maliq & D\'Essentials! Band jazz-soul terkemuka Indonesia ini akan membawakan repertoar lengkap hits mereka seperti "The One", "Senang", "Untitled", dan banyak lagi. Dengan paduan sempurna dari vokal Angga yang khas, aransemen musik yang sophisticated, dan kemampuan panggung yang luar biasa, MALIQ akan menghadirkan pengalaman musik yang elegan dan berkelas.'
+            };
+
+            document.getElementById('concert-description').textContent = descriptions[concertName] || 'Deskripsi konser tidak tersedia.';
+            
+            // Update concert date and location based on concert ID
+            const concertDetails = {
+                1: { date: '12 Maret 2025', location: 'Jakarta International Stadium' },
+                2: { date: '5 April 2025', location: 'Bandung Convention Center' },
+                3: { date: '20 Mei 2025', location: 'Surabaya Grand Hall' },
+                4: { date: '15 Juni 2025', location: 'Jakarta International Stadium' },
+                5: { date: '10 Juli 2025', location: 'Bandung Convention Center' },
+                6: { date: '22 Agustus 2025', location: 'Surabaya Grand Hall' },
+                7: { date: '5 September 2025', location: 'Jakarta International Stadium' },
+                8: { date: '12 Oktober 2025', location: 'Bandung Convention Center' },
+                9: { date: '18 November 2025', location: 'Surabaya Grand Hall' },
+                10: { date: '25 Desember 2025', location: 'Jakarta International Stadium' },
+                11: { date: '15 Januari 2026', location: 'Bandung Convention Center' },
+                12: { date: '20 Februari 2026', location: 'Surabaya Grand Hall' }
+            };
+
+            const concertDetail = concertDetails[concertId];
+            if (concertDetail) {
+                document.getElementById('concert-date').textContent = concertDetail.date;
+                document.getElementById('concert-location').textContent = concertDetail.location;
+            }
+            
+            // Update prices based on concert
+            if (concertPrices[concertId]) {
+                const prices = concertPrices[concertId];
+                document.querySelector('.ticket-type:nth-child(1) .ticket-price').textContent = 
+                    `Rp${prices.silver.toLocaleString()}`;
+                document.querySelector('.ticket-type:nth-child(2) .ticket-price').textContent = 
+                    `Rp${prices.gold.toLocaleString()}`;
+                document.querySelector('.ticket-type:nth-child(3) .ticket-price').textContent = 
+                    `Rp${prices.vip.toLocaleString()}`;
+                document.querySelector('.ticket-type:nth-child(4) .ticket-price').textContent = 
+                    `Rp${prices.vvip.toLocaleString()}`;
+            }
+
+            // Update the existing updateTotalPrice function
+            function updateTotalPrice() {
+                const prices = concertPrices[concertId];
+                if (!prices) return;
+
+                const silverQuantity = parseInt(document.getElementById('silver-quantity').textContent);
+                const goldQuantity = parseInt(document.getElementById('gold-quantity').textContent);
+                const vipQuantity = parseInt(document.getElementById('vip-quantity').textContent);
+                const vvipQuantity = parseInt(document.getElementById('vvip-quantity').textContent);
+
+                const totalPrice = (silverQuantity * prices.silver) + 
+                                (goldQuantity * prices.gold) + 
+                                (vipQuantity * prices.vip) + 
+                                (vvipQuantity * prices.vvip);
+                                
+                document.getElementById('total-price').textContent = `Rp${totalPrice.toLocaleString()}`;
+            }
+        }
+
+        function openUserDataModal() {
+            document.getElementById('user-data-modal').style.display = 'flex';
+        }
+    
+        function closeUserDataModal() {
+            document.getElementById('user-data-modal').style.display = 'none';
+        }
+    
+        function submitUserData() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+    
+            if (name && email && phone) {
+                closeUserDataModal();
+                openPaymentModal();
+            } else {
+                alert("Harap isi semua data diri sebelum melanjutkan.");
+            }
+        }
+    
+        function openPaymentModal() {
+            document.getElementById('payment-modal').style.display = 'flex';
+        }
+    
+        function closePaymentModal() {
+            document.getElementById('payment-modal').style.display = 'none';
+        }
+
+        function updateQuantity(ticketType, change) {
+            const quantityElement = document.getElementById(`${ticketType}-quantity`);
+            let quantity = parseInt(quantityElement.textContent);
+            quantity = Math.max(0, quantity + change);
+            quantityElement.textContent = quantity;
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            const silverQuantity = parseInt(document.getElementById('silver-quantity').textContent);
+            const goldQuantity = parseInt(document.getElementById('gold-quantity').textContent);
+            const vipQuantity = parseInt(document.getElementById('vip-quantity').textContent);
+            const vvipQuantity = parseInt(document.getElementById('vvip-quantity').textContent);
+
+            const totalPrice = (silverQuantity * 150000) + (goldQuantity * 200000) + (vipQuantity * 300000) + (vvipQuantity * 400000);
+            document.getElementById('total-price').textContent = `Rp${totalPrice.toLocaleString()}`;
+        }
+    </script>
+    <script src="buy.js"></script>
+    <div class="ticket-section" style="text-align: right;">
+        <button class="buy-button" onclick="openUserDataModal()" style="padding: 15px 30px; font-size: 18px; background-color: #4caf50; color: white; border: none; border-radius: 5px; cursor: pointer;">BELI TIKET</button>
+    </div>
+</body>
+</html>
+

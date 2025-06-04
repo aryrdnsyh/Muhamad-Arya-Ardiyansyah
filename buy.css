@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.concert-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.concert-details {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.concert-image {
+    flex: 0 0 300px;
+}
+
+.concert-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.concert-info {
+    flex: 1;
+}
+
+.concert-info h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.concert-info p {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.ticket-options {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-type {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ticket-type:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ticket-info {
+    flex: 1;
+}
+
+.ticket-info h4 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.ticket-info p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.ticket-price {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background: #6a11cb;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background: #5a0fb0;
+}
+
+.quantity-btn:active {
+    transform: scale(0.95);
+}
+
+.quantity {
+    font-size: 18px;
+    margin: 0 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.total-section {
+    margin-top: 20px;
+    text-align: right;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Added Flexbox for Alignment */
+.ticket-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.ticket-summary .ticket-options {
+    flex: 3;
+}
+
+.ticket-summary .total-section {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+}
+
+.total-section h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.buy-btn {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.buy-btn:hover {
+    background: #5a0fb0;
+    transform: scale(1.1);
+}
+
+/* Modal Styles */
+#payment-modal, #user-data-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+#payment-modal div, #user-data-modal div {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+}
+
+#payment-modal button, #user-data-modal button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#payment-modal button:hover, #user-data-modal button:hover {
+    transform: scale(1.05);
+}
+
+/* User Data Modal */
+#user-data-modal h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#user-data-modal form {
+    margin: 0;
+}
+
+#user-data-modal form div {
+    margin-bottom: 15px;
+}
+
+#user-data-modal form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+#user-data-modal form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#user-data-modal form input:focus {
+    border-color: #6a11cb;
+    outline: none;
+}
+
+#user-data-modal button {
+    background-color: #6a11cb;
+    color: #fff;
+}
+
+#user-data-modal button:hover {
+    background-color: #5a0fb8;
+}
+
+/* Payment Modal Buttons */
+#payment-modal button:first-child {
+    background-color: #f9c50e;
+}
+
+#payment-modal button:nth-child(2) {
+    background-color: #00aaff;
+}
+
+#payment-modal button:nth-child(3) {
+    background-color: #8dc63f;
+}
+
+#payment-modal button:nth-child(4) {
+    background-color: #ff5722;
+}
+
+#payment-modal button:last-child {
+    background-color: #f00;
+}
+
+#payment-modal button:last-child:hover {
+    background-color: #d00;
+}
+
+@media (max-width: 768px) {
+    .concert-details {
+        flex-direction: column;
+    }
+
+    .concert-image {
+        flex: none;
+        margin-bottom: 20px;
+    }
+
+    .ticket-summary {
+        flex-direction: column;
+    }
+
+    .total-section {
+        text-align: center;
+    }
+}

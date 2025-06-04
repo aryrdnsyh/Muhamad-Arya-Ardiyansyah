@@ -1,76 +1,405 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login - Aplikasi Jual Beli</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiket Konser</title>
+    <link rel="stylesheet" href="styles-updated.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <div class="container" role="main" aria-labelledby="logo-title">
-
-    <button class="hamburger" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="nav-menu" tabindex="0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <line x1="3" y1="18" x2="21" y2="18" />
-      </svg>
-    </button>
-
-    <header class="logo" id="logo-title" tabindex="0" aria-label="Logo aplikasi JualBeli">
-      <h1>SMARTWATCH</h1>
+    <!-- Header -->
+    <header class="header">
+        <h1>Konser ID</h1>
+        <nav>
+            <ul>
+                <li><a href="#concerts"><i class="fas fa-music"></i> Konser</a></li>
+                <li><a href="kontak.html"><i class="fas fa-envelope"></i> Kontak</a></li>
+                <li><a href="tentangkami.html"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
+                <div class="nav-right">
+                    <li id="auth-links">
+                        <span id="user-profile" class="dropdown" style="display: none;">
+                            <img id="user-photo" src="" alt="Profile" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                            <span id="user-name"></span>
+                            <div class="dropdown-content">
+                                <a href="#" class="profile-link"><i class="fas fa-user"></i> Profil</a>
+                                <a href="#" onclick="signOut()" class="signout-link"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+                            </div>
+                        </span>
+                        <span id="auth-buttons">
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Masuk</a>
+                            <a href="register.html"><i class="fas fa-user-plus"></i> Daftar</a>
+                        </span>
+                    </li>
+                </div>
+                <li class="cart-wrapper">
+                    <a href="#cart" class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-    <img 
-      src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" 
-      alt="Ilustrasi produk jual beli modern" 
-      class="illustration" 
-      loading="lazy" decoding="async" aria-hidden="true" 
-    />
+    <!-- Search Bar -->
+    <section class="search-bar">
+        <input type="text" id="search-input" placeholder="Cari konser...">
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+    </section>
 
-    <form id="loginForm" aria-label="Form login aplikasi jual beli" novalidate>
-      
-      <div class="form-group">
-        <input type="text" id="email" name="email" placeholder=" " autocomplete="username" aria-describedby="emailError" required />
-        <label for="email">Email / Username</label>
-        <div id="emailError" class="error-msg">Mohon isi email atau username</div>
-      </div>
-
-      <div class="form-group password-wrapper">
-        <input type="password" id="password" name="password" placeholder=" " autocomplete="current-password" aria-describedby="passwordError" required />
-        <label for="password">Password</label>
-        <span class="toggle-password" id="togglePassword" role="button" tabindex="0" aria-label="Tampilkan atau sembunyikan password" aria-pressed="false">
-          <svg width="24" height="24" fill="none" stroke="#b7b7b7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </span>
-        <div id="passwordError" class="error-msg">Mohon isi password</div>
-      </div>
-
-      <button type="submit" class="login-btn">Login</button>
-
-      <nav class="links-row">
-        <a href="#">Lupa Password?</a>
-        <a href="#">Daftar</a>
-      </nav>
-    </form>
-
-    <div class="additional-content">
-      <div class="clock-items">
-        <div class="clock-item">
-          <img src="skmei-1571-9943703-1.webp" alt="Jam Kecil 1" />
-          <div class="description">Jam tangan ini adalah pilihan sempurna bagi Anda yang menghargai keindahan.</div>
+    <!-- Image Slider -->
+    <section class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide">
+                <img src="images/20230618-Lirik-Lagu-Nemen-NDX-AKA.jpg" alt="Konser NDX AKA">
+                <div class="slide-content">
+                    <h2>NDX AKA</h2>
+                    <p>Rasakan sensasi live performance dari NDX AKA dalam konser epik yang akan membawakan hits terbaik mereka. Siapkan dirimu untuk bernyanyi dan bergoyang bersama!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/f72db0aa2af4c91a9324a8e940d9af3420019260.jpg" alt="Konser The Panturas">
+                <div class="slide-content">
+                    <h2>The Panturas</h2>
+                    <p>Nikmati gemuruh surf rock The Panturas dalam pertunjukan spektakuler yang menggabungkan energi mentah dan melodi menawan. Jangan lewatkan malam yang tak terlupakan!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/The-Changcuters-group-BG-02.jpg" alt="Acara Konser">
+                <div class="slide-content">
+                    <h2>The Changcuters</h2>
+                    <p>Bersiaplah untuk rockin' night bersama The Changcuters! Saksikan penampilan energik dan lagu-lagu hits mereka yang akan membuat malam Anda bergemuruh dengan semangat rock n' roll!</p>
+                </div>
+            </div>
         </div>
-        <div class="clock-item">
-          <img src="jam-tangan-pria-digital-led-skmei-dg1863-1679493450.jpg" alt="Jam Kecil 2" />
-          <div class="description">Smartwatch ini bukan hanya petunjuk waktu, tapi asisten pribadi Anda.</div>
+        <button class="prev-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="next-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        <div class="dots-container" id="dotsContainer"></div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-bar">
+        <select id="filter-category">
+            <option value="all">Semua Kategori</option>
+            <option value="pop">Pop</option>
+            <option value="jazz">Jazz</option>
+            <option value="rock">Rock</option>
+        </select>
+        <select id="filter-location">
+            <option value="all">Semua Lokasi</option>
+            <option value="jakarta">Jakarta</option>
+            <option value="bandung">Bandung</option>
+            <option value="surabaya">Surabaya</option>
+            <option value="medan">Medan</option>
+            <option value="makassar">Makassar</option>
+            <option value="bali">Bali</option>
+            <option value="yogyakarta">Yogyakarta</option>
+            <option value="semarang">Semarang</option>
+            <option value="palembang">Palembang</option>
+            <option value="balikpapan">Balikpapan</option>
+            <option value="manado">Manado</option>
+            <option value="batam">Batam</option>
+            <option value="padang">Padang</option>
+            <option value="pontianak">Pontianak</option>
+            <option value="samarinda">Samarinda</option>
+            <option value="bengkulu">Bengkulu</option>
+            <option value="malang">Malang</option>
+            <option value="solo">Solo</option>
+            <option value="solo">Pekalongan</option>
+            <option value="pekanbaru">Pekanbaru</option>
+            <option value="banjarmasin">Banjarmasin</option>
+            <option value="kupang">Kupang</option>
+            <option value="ambon">Ambon</option>
+            <option value="jayapura">Jayapura</option>
+        </select>
+    </section>
+
+    <!-- Concerts Section -->
+    <main class="concerts" id="concerts">
+        <div class="concert-card" data-id="1" data-category="pop" data-location="jakarta">
+            <img src="images/745x489-img-81250-bernadya-instagrambernadyaribka.jpg" alt="Konser Bernadya di Jakarta">
+            <h3>Bernadya</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 12 Maret 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jakarta</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-1">
+                <strong>Tiket Tersedia:</strong> <span>100</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=1&name=Bernadya&image=745x489-img-81250-bernadya-instagrambernadyaribka.jpg'">Beli Tiket</button>
         </div>
-      </div>
+        <div class="concert-card" data-id="2" data-category="pop" data-location="bandung">
+            <img src="images/ufpu5rl9vqdpdy6yliij.jpg" alt="Konser Iwan Fals di Bandung">
+            <h3>Iwan Fals</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 5 April 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bandung</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-2">
+                <strong>Tiket Tersedia:</strong> <span>150</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=2&name=Iwan+Fals&image=ufpu5rl9vqdpdy6yliij.jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="3" data-category="jazz" data-location="surabaya">
+            <img src="images/maxresdefault.jpg" alt="Konser Tipe X di Surabaya">
+            <h3>Tipe X</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 20 Mei 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Surabaya</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-3">
+                <strong>Tiket Tersedia:</strong> <span>200</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=3&name=Tipe+X&image=maxresdefault.jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="4" data-category="pop" data-location="jakarta">
+            <img src="images/20230618-Lirik-Lagu-Nemen-NDX-AKA.jpg" alt="Konser NDX AKA di Jakarta">
+            <h3>NDX AKA</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 15 Juni 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jakarta</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-4">
+                <strong>Tiket Tersedia:</strong> <span>120</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=4&name=NDX+AKA&image=20230618-Lirik-Lagu-Nemen-NDX-AKA.jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="5" data-category="jazz" data-location="bandung">
+            <img src="images/16243-sheila-on-7 (1).jpg" alt="Konser Sheila on 7 di Bandung">
+            <h3>Sheila On 7</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 10 Juli 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bandung</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-5">
+                <strong>Tiket Tersedia:</strong> <span>130</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=5&name=Sheila+on+7&image=16243-sheila-on-7 (1).jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="6" data-category="pop" data-location="surabaya">
+            <img src="images/5e67148698a15.png" alt="Konser Dewa 19 di Surabaya">
+            <h3>Dewa 19</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 22 Agustus 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Surabaya</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-6">
+                <strong>Tiket Tersedia:</strong> <span>140</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=6&name=Dewa+19&image=5e67148698a15.png'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="7" data-category="pop" data-location="jakarta">
+            <img src="images/3176717901.webp" alt="Konser Guyon Waton di Jakarta">
+            <h3>Guyon Waton</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 5 September 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jakarta</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-7">
+                <strong>Tiket Tersedia:</strong> <span>110</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=7&name=Guyon+Waton&image=3176717901.webp'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="8" data-category="rock" data-location="bandung">
+            <img src="images/0000027877.jpg" alt="Konser Slank di Bandung">
+            <h3>Slank</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 12 Oktober 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bandung</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-8">
+                <strong>Tiket Tersedia:</strong> <span>160</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=8&name=Slank&image=0000027877.jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="9" data-category="rock" data-location="surabaya">
+            <img src="images/The-Changcuters-group-BG-02.jpg" alt="Konser The Changcuters di Surabaya">
+            <h3>The Changcuters</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 18 November 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Surabaya</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-9">
+                <strong>Tiket Tersedia:</strong> <span>170</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=9&name=The+Changcuters&image=The-Changcuters-group-BG-02.jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="10" data-category="jazz" data-location="jakarta">
+            <img src="images/images.jpg" alt="Konser JKT 48 di Jakarta">
+            <h3>JKT 48</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 25 Desember 2025</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jakarta</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-10">
+                <strong>Tiket Tersedia:</strong> <span>180</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=10&name=JKT+48&image=images.jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="11" data-category="rock" data-location="bandung">
+            <img src="images/f72db0aa2af4c91a9324a8e940d9af3420019260.jpg" alt="Konser The Panturas di Bandung">
+            <h3>The Panturas</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 15 Januari 2026</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bandung</p>
+            </div> <!-- Fixed closing div tag -->
+            <div class="ticket-availability" id="available-tickets-11">
+                <strong>Tiket Tersedia:</strong> <span>190</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=11&name=The+Panturas&image=f72db0aa2af4c91a9324a8e940d9af3420019260.jpg'">Beli Tiket</button>
+        </div>
+        <div class="concert-card" data-id="12" data-category="jazz" data-location="surabaya">
+            <img src="images/maliq-and-d-esencial_ratio-16x9.jpg" alt="Konser Pop di Surabaya">
+            <h3>Maliq & D'Essentials</h3>
+            <div class="concert-info">
+                <p><i class="fas fa-calendar-alt"></i> 20 Februari 2026</p>
+                <p><i class="fas fa-map-marker-alt"></i> Surabaya</p>
+            </div>
+            <div class="ticket-availability" id="available-tickets-12">
+                <strong>Tiket Tersedia:</strong> <span>200</span>
+            </div>
+            <button onclick="window.location.href='buy.html?id=12&name=Maliq+D+Essentials&image=maliq-and-d-esencial_ratio-16x9.jpg'">Beli Tiket</button>
+        </div>
+    </main>
+
+    <!-- Modal Popup -->
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h3>Beli Tiket</h3>
+            <p>Pilih opsi tiket Anda di bawah ini:</p>
+            <form>
+                <label for="quantity">Jumlah:</label>
+                <select id="quantity"></select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <br><br>
+                <p id="ticket-price">Harga: Rp 700,000</p>
+                <p id="total-price">Total: Rp 700,000</p>
+                <button type="submit">Konfirmasi</button>
+            </form>
+        </div>
     </div>
 
-  </div>
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Slider functionality
+        const slider = document.getElementById('slider');
+        const slides = slider.getElementsByClassName('slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('dotsContainer');
+        let currentIndex = 0;
 
+        function showSlide(index) {
+            if (index >= slides.length) currentIndex = 0;
+            if (index < 0) currentIndex = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slides[currentIndex].style.display = 'block';
+            updateDots();
+        }
+
+        function updateDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => showSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            showSlide(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            showSlide(currentIndex);
+        });
+
+        showSlide(currentIndex);
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+        const concertCards = document.querySelectorAll('.concert-card');
+
+        searchBtn.addEventListener('click', () => {
+            const query = searchInput.value.toLowerCase();
+            concertCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchBtn.click();
+            }
+        });
+
+        // Filter functionality
+        const filterCategory = document.getElementById('filter-category');
+        const filterLocation = document.getElementById('filter-location');
+
+        function filterConcerts() {
+            const category = filterCategory.value;
+            const location = filterLocation.value;
+            concertCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const cardLocation = card.getAttribute('data-location');
+                if ((category === 'all' || cardCategory === category) &&
+                    (location === 'all' || cardLocation === location)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        filterCategory.addEventListener('change', filterConcerts);
+        filterLocation.addEventListener('change', filterConcerts);
+
+        // Authentication functionality
+        const authLinks = document.getElementById('auth-links');
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+        if (loggedInUser) {
+            authLinks.innerHTML = `<span>Selamat datang, ${loggedInUser.name}</span> <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Keluar</a>`;
+            document.getElementById('logout').addEventListener('click', () => {
+                localStorage.removeItem('loggedInUser');
+                window.location.reload();
+            });
+        }
+
+        // Function to update available tickets in real-time
+        function updateAvailableTickets(concertId, ticketsSold) {
+            const availableTicketsElement = document.getElementById(`available-tickets-${concertId}`).querySelector('span');
+            let availableTickets = parseInt(availableTicketsElement.textContent);
+            availableTickets -= ticketsSold;
+            availableTicketsElement.textContent = availableTickets;
+        }
+
+        // Example usage: update available tickets for concert with ID 1
+        updateAvailableTickets(1, 1);
+    </script>
 </body>
 </html>

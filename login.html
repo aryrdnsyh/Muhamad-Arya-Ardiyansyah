@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Konser ID</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box login">
+            <div class="logo">
+                <i class="fas fa-music"></i>
+                <h1>Konser ID</h1>
+            </div>
+            <h2>Welcome Back!</h2>
+            <p class="subtitle">Login to continue</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" required placeholder="Email Address">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" required placeholder="Password">
+                </div>
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="divider">
+                <span>or login with</span>
+            </div>
+            <div class="social-auth">
+                <button class="google" onclick="googleSignIn()">
+                    <i class="fab fa-google"></i> Login with Google
+                </button>
+                <button class="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+            </div>
+            <p class="switch-auth">Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>
