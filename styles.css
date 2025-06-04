@@ -1,474 +1,175 @@
-/* styles.css - Modern, professional, and informative style for used car sales news */
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-}
-
 body {
-    background-color: #0a1e3f; /* dark blue */
-    color: #ffffff;
-    line-height: 1.6;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: #f5f5f5;
+  color: #1c1c1c;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.header {
-    background-color: #0a1e3f;
-    padding: 20px 0;
-    border-bottom: 3px solid #f97316; /* orange accent */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    text-align: center;
-}
-
-.main-title {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #f97316;
-    margin-bottom: 8px;
-}
-
-.sub-title {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #d1d5db; /* light gray */
-}
-
-.hero-section {
-    margin: 30px 0;
-    text-align: center;
-}
-
-.hero-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
-}
-
-.main-layout {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.content-area {
-    flex: 1 1 700px;
-    background-color: #142a5c;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
-}
-
-.infographics h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #f97316;
-    margin-bottom: 20px;
-}
-
-.sales-chart {
-    width: 100%;
-    height: auto;
-    background-color: #0a1e3f;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
-    margin-bottom: 30px;
-}
-
-.city-sales-map {
-    background-color: #0a1e3f;
-    border-radius: 12px;
-    padding: 15px 20px;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
-    margin-bottom: 40px;
-}
-
-.city-list {
-    list-style: none;
-    color: #f97316;
-    font-weight: 600;
-    font-size: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
-}
-
-.city-list li {
-    min-width: 120px;
-}
-
-.highlights-section {
-    margin-bottom: 30px;
-}
-
-.highlights-section h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #f97316;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.highlights-cards {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.highlight-card {
-    background-color: #0a1e3f;
-    padding: 15px 20px;
-    border-radius: 10px;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.5);
-    transition: transform 0.3s ease;
-}
-
-.highlight-card:hover,
-.highlight-card:focus-within {
-    transform: translateY(-6px);
-    outline: none;
+header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #1c1c1c;
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
-    flex-shrink: 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.sedan-icon {
-    background-image: url('https://img.icons8.com/ios-filled/50/f97316/sedan.png');
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #1e90ff, #2e70c5);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.suv-icon {
-    background-image: url('https://img.icons8.com/ios-filled/50/f97316/suv.png');
+.hero-content {
+  max-width: 60%;
 }
 
-.mpv-icon {
-    background-image: url('https://img.icons8.com/ios-filled/50/f97316/car.png');
+.hero h2 {
+  margin: 0;
+  font-size: 2rem;
 }
 
-.highlight-text h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 5px;
+.hero button {
+  margin-top: 1rem;
+  background-color: #4f46e5;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.highlight-text p {
-    font-size: 1rem;
-    color: #d1d5db;
+.hero button:hover {
+  background-color: #3730a3;
 }
 
-.expert-quote-section {
-    margin-bottom: 30px;
-    background-color: #142a5c;
-    padding: 25px 30px;
-    border-radius: 12px;
-    font-style: italic;
-    color: #f97316;
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.hero img {
+  width: 150px;
+  max-height: 150px;
+  object-fit: contain;
 }
 
-.expert-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #f97316;
+.produk-section {
+  padding: 2rem 1rem;
 }
 
-.expert-quote-section blockquote {
-    margin: 0;
-    font-size: 1.2rem;
-    flex: 1;
+.produk-section h3 {
+  margin: 1rem 0;
+  color: #1c1c1c;
+  font-size: 1.8rem;
+  text-align: center;
 }
 
-.expert-quote-section footer {
-    margin-top: 15px;
-    font-style: normal;
-    font-weight: 700;
-    text-align: right;
-    color: #ffffff;
+.produk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
-.popular-cars-section {
-    margin-bottom: 30px;
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
 
-.popular-cars-section h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #f97316;
-    margin-bottom: 20px;
-    text-align: center;
+.card:hover {
+  transform: scale(1.05);
 }
 
-.popular-cars-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+.card img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
 }
 
-.popular-cars-list li {
-    background-color: #0a1e3f;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
-    width: 280px;
-    display: flex;
-    gap: 15px;
-    padding: 15px;
-    align-items: center;
-    transition: transform 0.3s ease;
+.card h4 {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.2rem;
 }
 
-.popular-cars-list li:hover,
-.popular-cars-list li:focus-within {
-    transform: translateY(-6px);
-    outline: none;
+.card p {
+  margin: 0.2rem 0 0.8rem;
+  color: #333;
 }
 
-.popular-cars-list img {
-    width: 100px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
+.card button {
+  background-color: #4f46e5;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.car-info h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 5px;
+.card button:hover {
+  background-color: #2e70c5;
 }
 
-.car-info p {
-    font-size: 1rem;
-    color: #d1d5db;
-    margin: 2px 0;
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  color: #666;
+  margin-top: 2rem;
 }
 
-.sidebar {
-    flex: 0 0 300px;
-    background-color: #142a5c;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
-    color: #ffffff;
-    height: fit-content;
-}
-
-.sidebar h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #f97316;
-}
-
-.filter-section h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-#carFilterForm label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-#carFilterForm input[type="checkbox"] {
-    margin-right: 8px;
-}
-
-.related-news-list {
-    list-style: none;
-    display: flex;
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .produk-grid {
+    grid-template-columns: 1fr; /* Satu kolom pada layar kecil */
+  }
 }
 
-.related-news-list a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero img {
+    width: 100px;
+    margin-top: 1rem;
+  }
+
+  .card h4 {
     font-size: 1rem;
-    border-left: 4px solid transparent;
-    padding-left: 10px;
-    transition: border-color 0.3s ease;
-}
-
-.related-news-list a:hover,
-.related-news-list a:focus {
-    border-color: #f97316;
-    outline: none;
-}
-
-.btn-list {
-    background-color: #f97316;
-    color: #0a1e3f;
-    border: none;
-    padding: 14px 28px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    max-width: 300px;
-}
-
-.btn-list:hover,
-.btn-list:focus {
-    background-color: #d65a0b;
-    outline: none;
-}
-
-.footer {
-    background-color: #0a1e3f;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top: 3px solid #f97316;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    color: #ffffff;
-    font-size: 0.9rem;
-}
-
-.social-share {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-.social-share-btn {
-    background-color: #f97316;
-    border: none;
-    color: #0a1e3f;
-    font-weight: 700;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.social-share-btn:hover,
-.social-share-btn:focus {
-    background-color: #d65a0b;
-    outline: none;
-}
-
-/* Responsive */
-
-@media (max-width: 1024px) {
-    .main-layout {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 600px) {
-    .header-container {
-        text-align: center;
-    }
-
-    .main-title {
-        font-size: 1.8rem;
-    }
-
-    .sub-title {
-        font-size: 1rem;
-    }
-
-    .hero-section {
-        margin: 20px 0;
-    }
-
-    .main-layout {
-        gap: 20px;
-    }
-
-    .content-area {
-        padding: 20px;
-    }
-
-    .infographics h2,
-    .highlights-section h2,
-    .popular-cars-section h2,
-    .sidebar h2 {
-        font-size: 1.4rem;
-    }
-
-    .highlights-cards,
-    .popular-cars-list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .highlight-card,
-    .popular-cars-list li {
-        width: 100%;
-        max-width: 350px;
-    }
-
-    .expert-quote-section {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .expert-photo {
-        margin: 0 auto 15px;
-    }
-
-    .btn-list {
-        max-width: 100%;
-    }
+  }
 }

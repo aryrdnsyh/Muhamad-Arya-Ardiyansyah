@@ -33,7 +33,7 @@ body {
 .logo h1 {
   text-align: center;
   font-size: 2rem;
-  color: #2e7d32;
+  color: #4f46e5;
   margin-bottom: 2rem;
   letter-spacing: 1px;
 }
@@ -50,7 +50,7 @@ body {
 .hamburger svg {
   width: 28px;
   height: 28px;
-  stroke: #2e7d32;
+  stroke: #4f46e5;
 }
 
 .illustration {
@@ -77,7 +77,7 @@ input[type="text"], input[type="password"] {
 }
 
 input:focus {
-  border-color: #43a047;
+  border-color: #4f46e5;
   background: #fff;
   outline: none;
 }
@@ -98,7 +98,7 @@ input:not(:placeholder-shown) + label {
   font-size: 0.75rem;
   background: #fff;
   padding: 0 0.3rem;
-  color: #2e7d32;
+  color: #4f46e5;
 }
 
 .toggle-password {
@@ -110,7 +110,8 @@ input:not(:placeholder-shown) + label {
 }
 
 .login-btn {
-  background: #2e7d32;
+  display: inline-block; /* Penting agar padding dan ukuran bisa diterapkan */
+  background: #4f46e5;
   color: white;
   padding: 1rem;
   border: none;
@@ -120,10 +121,12 @@ input:not(:placeholder-shown) + label {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s;
+  text-align: center;     
+  text-decoration: none; 
 }
 
 .login-btn:hover {
-  background: #1b5e20;
+  background: #4f46e5;
 }
 
 .links-row {
@@ -134,7 +137,7 @@ input:not(:placeholder-shown) + label {
 
 .links-row a {
   font-size: 0.85rem;
-  color: #2e7d32;
+  color: #4f46e5;
   text-decoration: none;
 }
 
@@ -162,7 +165,7 @@ input:not(:placeholder-shown) + label {
   text-align: center;
   font-size: 1.3rem;
   font-weight: bold;
-  color: #2e7d32;
+  color: #4f46e5;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid #c8e6c9;
   padding-bottom: 0.5rem;
